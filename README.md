@@ -36,6 +36,7 @@ You will need to prepare 2 excel sheets; templates have been provided in the zip
 - Headings must be "Person" for students, "Rank" for ranked choices
 - Ranked choices must be formatted in this manner: 1st choice,2nd choice,3rd choice,etc...
 - Use "concatenate" function in excel to convert your google form response into the needed format for ranked choices :)
+- Do not change the order of submissions as the code does not read timestamps; it assumes the order of the list is the order of priority
 
 
 Copy path link of the excel sheets into the code:
