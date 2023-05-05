@@ -2,9 +2,9 @@
 Hi guys! I wrote this algorithm on Python (with the help of ChatGPT) to assist in the allocation of GP clinics during GP week in a fair manner.
 I've decided to publish it for future batches to benefit from this as well.
 
-This algorithm allows for allocation based on choice followed by first-come-first-serve basis.
+This algorithm allows for allocation based on choice followed by RNG.
 This means that all 1st choices will be allocated first, followed by 2nd choices and so on.
-In the event that the number of 1st choices exceed the number of slots of a clinic, it will be allocated in a first-come-first serve basis.
+In the event that the number of 1st choices exceed the number of slots of a clinic, the code will allocate randomly.
 This algorithm also assumes that there are 2 slots available for every clinic. 
 
 
