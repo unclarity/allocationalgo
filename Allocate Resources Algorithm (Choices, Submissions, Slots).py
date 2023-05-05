@@ -1,6 +1,7 @@
 # Import the required libraries
 from collections import defaultdict
 import pandas as pd
+import random
 
 # Load the Excel file containing choices using Pandas
 choices_df = pd.read_excel('path/to/your/choices/file.xlsx')
@@ -22,7 +23,11 @@ def allocate_resources(choices, submissions, slots):
     # Initialize a dictionary to store allocations
     allocations = defaultdict(list)
 
-    # Iterate through the submissions in first-come, first-served order
+    # Create a dictionary to store the persons who rank each choice similarly
+    similarly_ranked = defaultdict(list)
+
+    # Iterate through the submissions in random order
+    random.shuffle(submissions)
     for submission in submissions:
         # Extract ranked choices from submission
         ranked_choices = submission["Rank"].split(",")  # Assumes the "Rank" column contains comma-separated ranked choices
@@ -30,6 +35,15 @@ def allocate_resources(choices, submissions, slots):
             if len(allocations[choice]) < slots:
                 allocations[choice].append(submission["Person"])
                 break  # Break out of the loop after allocating to the first available choice
+            else:
+                similarly_ranked[choice].append(submission["Person"])
+
+    # Allocate persons who rank a choice similarly randomly
+    for choice, persons in similarly_ranked.items():
+        while len(allocations[choice]) < slots and len(persons) > 0:
+            person = random.choice(persons)
+            allocations[choice].append(person)
+            persons.remove(person)
 
     return allocations
 
