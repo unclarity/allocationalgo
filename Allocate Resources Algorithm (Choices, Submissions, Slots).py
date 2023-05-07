@@ -1,7 +1,11 @@
 # Import the required libraries
 from collections import defaultdict
 import pandas as pd
+import time
 import random
+
+# Set the seed based on the current time
+random.seed(time.time())
 
 # Load the Excel file containing choices using Pandas
 choices_df = pd.read_excel('path/to/your/choices/file.xlsx')
